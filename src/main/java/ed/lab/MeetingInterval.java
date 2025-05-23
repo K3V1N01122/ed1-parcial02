@@ -1,4 +1,4 @@
-package ed.lab;
+package ed.lab; //Kevin Palencia
 
 public class MeetingInterval {
     public int start;
