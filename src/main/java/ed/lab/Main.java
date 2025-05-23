@@ -1,6 +1,6 @@
 package ed.lab;
 
-import java.util.ArrayList; //Kevin Palencia
+import java.util.ArrayList; //KP
 
 public class Main {
     public static void main(String[] args) {
