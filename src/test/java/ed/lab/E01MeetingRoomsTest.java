@@ -1,26 +1,36 @@
-package ed.lab; //KP
+package ed.lab;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class E01MeetingRoomsTest {
-    public static void main(String[] args) {
-        E01MeetingRooms rooms = new E01MeetingRooms();
+import static org.junit.jupiter.api.Assertions.*;
 
-        // Test 1: Se esperan 2 salas
-        ArrayList<MeetingInterval> lista1 = new ArrayList<>();
-        lista1.add(new MeetingInterval(0, 30));
-        lista1.add(new MeetingInterval(5, 10));
-        lista1.add(new MeetingInterval(15, 20));
-        MeetingInterval[] arreglo1 = lista1.toArray(new MeetingInterval[0]);
-        int resultado1 = rooms.minMeetingRooms(arreglo1);
-        System.out.println("Test 1 - Esperado: 2, Obtenido: " + resultado1);
+class E01MeetingRoomsTest {
 
-        // Test 2: Se espera 1 sala
-        ArrayList<MeetingInterval> lista2 = new ArrayList<>();
-        lista2.add(new MeetingInterval(7, 10));
-        lista2.add(new MeetingInterval(2, 4));
-        MeetingInterval[] arreglo2 = lista2.toArray(new MeetingInterval[0]);
-        int resultado2 = rooms.minMeetingRooms(arreglo2);
-        System.out.println("Test 2 - Esperado: 1, Obtenido: " + resultado2);
+    @ParameterizedTest
+    @CsvFileSource(resources = "E01.csv", useHeadersInDisplayName = true, delimiter = '|', maxCharsPerColumn = 8192)
+    void minMeetingRooms(String input, Integer expected) {
+        List<MeetingInterval> meetingIntervals = Arrays.stream(input.trim().split(","))
+                .map(s -> s.split("-"))
+                .map(s -> {
+                    int startTime = Integer.parseInt(s[0]);
+                    int endTime = Integer.parseInt(s[1]);
+
+                    return new MeetingInterval(startTime, endTime);
+                })
+                .toList();
+
+        E01MeetingRooms e01 = new E01MeetingRooms();
+        int actual = e01.minMeetingRooms(new ArrayList<>(meetingIntervals));
+        assertEquals(expected, actual,
+                () -> String.format("Se esperaba: %s y se obtuvo: %s\nIntervalos: %s",
+                        expected,
+                        actual,
+                        meetingIntervals));
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList; //KP
 
 public class Main {
     public static void main(String[] args) {
-        // PRUEBA DE E01MeetingRooms
+        /*// PRUEBA DE E01MeetingRooms
         ArrayList<MeetingInterval> intervals = new ArrayList<>();
         intervals.add(new MeetingInterval(0, 30));
         intervals.add(new MeetingInterval(5, 10));
@@ -29,7 +29,7 @@ public class Main {
         System.out.println(logger.shouldPrintMessage(3, "foo"));  // false
         System.out.println(logger.shouldPrintMessage(8, "bar"));  // false
         System.out.println(logger.shouldPrintMessage(10, "foo")); // false
-        System.out.println(logger.shouldPrintMessage(11, "foo")); // true
+        System.out.println(logger.shouldPrintMessage(11, "foo")); // true*/
     }
 }
 
